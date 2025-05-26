@@ -1,0 +1,504 @@
+/* ------------------------
+   Grundlegende Variablen (Dark Mode by Default)
+------------------------- */
+:root {
+    --bg-color: #121212;
+    --text-primary: #eee;
+    --text-secondary: #bbb;
+    --primary-color: #4a90e2;
+    --primary-color-hover: #357ABD;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --input-bg: #2b2b2b;
+    --input-text: #eee;
+    --input-focus-bg: #3a3f4b;
+    --button-text: #fff;
+    --shadow-light: rgba(0, 0, 0, 0.6);
+    --bg-footer: #111;
+    --text-footer: #ddd;
+}
+
+/* Apply Variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-item {
+    background-color: var(--card-bg);
+    box-shadow: 0 0 15px var(--shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+footer {
+    background-color: var(--bg-footer);
+    color: var(--text-footer);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ------------------------
+     Reset und Grundlayout 
+  ------------------------- */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  html {
+    font-size: 16px; /* Basis für REM */
+    scroll-behavior: smooth; /* sanftes Scrollen */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    height: 100%;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    min-width: 320px; /* Minimum Breite für kleine Geräte */
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Haupt-Wrapper, der sich auf volle Höhe streckt */
+  body > div#page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header, main und footer zentriert, max Breite und dynamische Breite */
+  header, main, footer {
+    width: 100%;
+    max-width: 90vw;
+    min-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+  
+  /* main nimmt den verfügbaren Raum ein */
+  main {
+    flex: 1 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+  }
+  
+  /* ------------------------
+     NAVBAR 
+  ------------------------- */
+  nav {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    user-select: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 0 0 10px 10px;
+    /* Smooth background transition for dark mode */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    user-select: none;
+  }
+  
+  nav ul li a:hover,
+  nav ul li a.active {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+  }
+  
+  /* Darkmode Toggle Button */
+  #darkModeToggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+    user-select: none;
+  }
+  
+  #darkModeToggle:hover,
+  #darkModeToggle:focus {
+    color: var(--primary-color-hover);
+    outline: none;
+  }
+  
+  /* ------------------------
+     Content Bereich
+  ------------------------- */
+  .page-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  
+  .content-card {
+    background-color: var(--card-bg);
+    border-radius: 14px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 15px 30px var(--shadow-light);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+  }
+  
+  .content-card:hover {
+    box-shadow: 0 25px 45px var(--shadow-light);
+    transform: translateY(-5px);
+  }
+  
+  /* ------------------------
+     Überschriften 
+  ------------------------- */
+  h1, h2, h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    user-select: none;
+    line-height: 1.2;
+  }
+  
+  /* ------------------------
+     Kontaktformular Styles
+  ------------------------- */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  
+  form label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    user-select: none;
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    border: 1.5px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 0; /* verhindert Overflow bei kleinen Geräten */
+  }
+  
+  form input[type="text"]:focus,
+  form input[type="email"]:focus,
+  form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px var(--primary-color)aa;
+    background-color: var(--input-focus-bg);
+  }
+  
+  form textarea {
+    min-height: 130px;
+    line-height: 1.4;
+    font-family: inherit;
+  }
+  
+  form button {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 1rem 1.6rem;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    transition: background-color 0.3s ease;
+    user-select: none;
+    align-self: flex-start;
+    min-width: 140px;
+  }
+  
+  form button:hover,
+  form button:focus {
+    background-color: var(--primary-color-hover);
+    outline: none;
+  }
+  
+  /* ------------------------
+     Footer am unteren Rand 
+  ------------------------- */
+  footer {
+    background-color: var(--bg-footer);
+    background-size: 100%;
+    color: var(--text-footer);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 -2px 8px var(--shadow-light);
+  }
+  
+  /* ------------------------
+     Scrollbar Styling (optional) 
+  ------------------------- */
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: var(--bg-color);
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid var(--bg-color);
+  }
+  
+  /* ------------------------
+     Responsive Design 
+  ------------------------- */
+  @media (max-width: 1024px) {
+    nav ul {
+      gap: 1rem;
+    }
+  
+    nav .logo {
+      font-size: 1.3rem;
+    }
+  
+    .content-card {
+      padding: 2rem;
+    }
+  
+    main {
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0;
+    }
+  
+    nav .logo {
+      margin-bottom: 1rem;
+    }
+  
+    .page-content {
+      padding: 0 1rem;
+      max-width: 100%;
+    }
+  
+    .content-card {
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+    }
+  
+    form button {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav {
+      padding: 0.5rem 1rem;
+    }
+  
+    nav .logo {
+      font-size: 1.1rem;
+    }
+  
+    main {
+      margin: 1rem 0 2rem 0;
+      padding: 0 1rem;
+    }
+  
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+      font-size: 0.9rem;
+    }
+  
+    form button {
+      font-size: 1rem;
+    }
+  }
+  
+  /* ------------------------
+     Accessibility & Usability Enhancements 
+  ------------------------- */
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus {
+    outline-offset: 2px;
+  }
+  
+  /* Verhindert horizontales Scrollen */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.hero {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    padding: 1rem;
+    text-align: center;
+  }
+
+/* Projects Section */
+.projects {
+  display: grid; /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic columns */
+  gap: 1.5rem; /* Space between items */
+  padding: 2rem; /* Add padding around the section */
+  margin: 0 auto; /* Center the section */
+  width: 100%; /* Use the full width of the screen */
+  box-sizing: border-box;
+}
+
+.project-item {
+  background-color: var(--card-bg); /* Use the card background color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1rem; /* Inner padding */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); /* Subtle neon glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center; /* Center-align content */
+}
+
+.project-item h3 {
+  margin-bottom: 0.5rem; /* Space below the title */
+  color: var(--text-primary); /* Use primary text color */
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.4); /* Neon glow */
+}
+
+.project-item p {
+  margin-bottom: 1rem; /* Space below the description */
+  color: var(--text-secondary); /* Use secondary text color */
+}
+
+.project-item .btn {
+  display: inline-block; /* Make the button inline-block */
+  padding: 0.5rem 1rem; /* Add padding */
+  background-color: var(--primary-color); /* Button background color */
+  color: var(--button-text); /* Button text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(30, 144, 255, 0.5); /* Neon glow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.project-item .btn:hover {
+  background-color: var(--primary-color-hover); /* Change color on hover */
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.8), 0 0 40px rgba(30, 144, 255, 0.6); /* Stronger neon glow */
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.project-item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 0 0 50px rgba(0, 255, 255, 0.4); /* Stronger neon glow */
+}
+
+/* Neon Button */
+.project-item .btn, .neon-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: rgba(30, 144, 255, 0.8); /* Helles Gelb für bessere Sichtbarkeit */
+    color: #121212; /* Dunkler Text für Kontrast */
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5); /* Gelber Neon-Glow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item .btn:hover, .neon-btn:hover {
+    background-color: #0059ff; /* Dunkleres Orange beim Hover */
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.8), 0 0 40px rgba(255, 153, 0, 0.6); /* Stärkerer Glow */
+    text-decoration: none;
+}
+
+/* Profilbild anpassen */
+.profile-image {
+    width: 150px; /* Breite des Profilbilds */
+    height: 150px; /* Höhe des Profilbilds */
+    border-radius: 50%; /* Rundes Profilbild */
+    object-fit: cover; /* Zuschneiden, um das Bild proportional zu halten */
+    border: 2px solid var(--primary-color); /* Optional: Rahmen um das Bild */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Optional: Neon-Glow */
+    margin-bottom: 1rem; /* Abstand unter dem Bild */
+}
+
+/* Styling für about_me_link */
+.about_me_link {
+    color: var(--primary-color); /* Primärfarbe für den Link */
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    font-weight: 600; /* Hebt den Link hervor */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Sanfter Übergang */
+}
+
+.about_me_link:hover {
+    color: var(--primary-color-hover); /* Hover-Farbe */
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.4); /* Neon-Glow beim Hover */
+    text-decoration: underline; /* Unterstreichung beim Hover */
+}
